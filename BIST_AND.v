@@ -28,7 +28,7 @@ wire [1:0]Q;
 wire resp,result,init,en,compare;
 BISTController_AND a4 (Start_BIST,result,clk,init,en,compare,pass_fail);
 TPG_AND a2(clk,en,seed2,init,Q);
-assign resp = Q[0]&Q[1];
+and (resp,Q[0],Q[1]);
 ORA_AND a1( resp,clk,init,en,seed1,P);
 COMPARATOR_AND a3(P,golden_sig,compare,result);
 
